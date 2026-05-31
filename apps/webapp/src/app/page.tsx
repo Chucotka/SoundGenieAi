@@ -1,22 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import { Music, Search, Headphones, Repeat, Smartphone, Star, SkipBack, SkipForward, Pause } from "lucide-react";
+import { Header } from "@/components/Header";
 
 export default function Home() {
+  const handleCardTap = () => {
+    if (typeof window !== "undefined" && window.Telegram?.WebApp?.HapticFeedback) {
+      window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
+    }
+  };
+
   return (
     <main className="p-4 flex flex-col items-center max-w-md mx-auto">
-      {/* Header */}
-      <div className="mt-8 mb-6 flex flex-col items-center">
-        <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-4 shadow-[0_0_30px_rgba(155,109,255,0.2)]">
-          <Music className="w-8 h-8 text-accent" />
-        </div>
-        <h1 className="font-serif text-4xl mb-1 text-transparent bg-clip-text bg-gradient-to-r from-accent to-pink">
-          SoundGenie AI
-        </h1>
-        <p className="text-muted text-sm">Музыкальный AI-помощник</p>
-      </div>
+      <Header />
 
       {/* Mini Player */}
-      <Link href="/player" className="w-full">
+      <Link href="/player" className="w-full" onClick={handleCardTap}>
         <div className="w-full bg-surface rounded-3xl p-4 flex items-center justify-between mb-8 border border-white/5">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-pink/20 rounded-xl flex items-center justify-center">
@@ -42,28 +42,28 @@ export default function Home() {
         <h2 className="text-xs font-semibold text-muted tracking-wider mb-4 uppercase">Возможности</h2>
 
         <div className="grid grid-cols-2 gap-4">
-          <Link href="/search" className="bg-surface rounded-3xl p-5 border border-white/5 relative overflow-hidden group">
+          <Link href="/search" onClick={handleCardTap} className="bg-surface rounded-3xl p-5 border border-white/5 relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
             <Search className="w-6 h-6 text-accent mb-8 relative z-10" />
             <h3 className="font-semibold text-lg relative z-10">Поиск</h3>
             <p className="text-muted text-sm relative z-10">Умный AI-поиск музыки</p>
           </Link>
 
-          <Link href="/player" className="bg-surface rounded-3xl p-5 border border-white/5 relative overflow-hidden group">
+          <Link href="/player" onClick={handleCardTap} className="bg-surface rounded-3xl p-5 border border-white/5 relative overflow-hidden group">
              <div className="absolute top-0 right-0 w-24 h-24 bg-pink/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
             <Headphones className="w-6 h-6 text-pink mb-8 relative z-10" />
             <h3 className="font-semibold text-lg relative z-10">Плеер</h3>
             <p className="text-muted text-sm relative z-10">Студия воспроизведения</p>
           </Link>
 
-          <Link href="/remix" className="bg-surface rounded-3xl p-5 border border-white/5 relative overflow-hidden group">
+          <Link href="/remix" onClick={handleCardTap} className="bg-surface rounded-3xl p-5 border border-white/5 relative overflow-hidden group">
              <div className="absolute top-0 right-0 w-24 h-24 bg-orange/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
             <Repeat className="w-6 h-6 text-orange mb-8 relative z-10" />
             <h3 className="font-semibold text-lg relative z-10">Ремикс</h3>
             <p className="text-muted text-sm relative z-10">AI фабрика ремиксов</p>
           </Link>
 
-          <Link href="/stories" className="bg-surface rounded-3xl p-5 border border-white/5 relative overflow-hidden group">
+          <Link href="/stories" onClick={handleCardTap} className="bg-surface rounded-3xl p-5 border border-white/5 relative overflow-hidden group">
              <div className="absolute top-0 right-0 w-24 h-24 bg-teal/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
             <Smartphone className="w-6 h-6 text-teal mb-8 relative z-10" />
             <h3 className="font-semibold text-lg relative z-10">Stories</h3>
@@ -74,7 +74,7 @@ export default function Home() {
 
       {/* List Menu */}
       <div className="w-full space-y-3">
-        <Link href="/library" className="w-full bg-surface rounded-2xl p-4 flex items-center justify-between border border-white/5">
+        <Link href="/library" onClick={handleCardTap} className="w-full bg-surface rounded-2xl p-4 flex items-center justify-between border border-white/5">
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-xl">📚</div>
             <div>
@@ -85,7 +85,7 @@ export default function Home() {
           <div className="text-muted">›</div>
         </Link>
 
-        <Link href="/feed" className="w-full bg-surface rounded-2xl p-4 flex items-center justify-between border border-white/5">
+        <Link href="/feed" onClick={handleCardTap} className="w-full bg-surface rounded-2xl p-4 flex items-center justify-between border border-white/5">
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-xl">🔥</div>
             <div>
@@ -96,7 +96,7 @@ export default function Home() {
           <div className="text-muted">›</div>
         </Link>
 
-        <Link href="/premium" className="w-full bg-surface rounded-2xl p-4 flex items-center justify-between border border-gold/20 shadow-[0_0_15px_rgba(240,192,96,0.1)] mt-2">
+        <Link href="/premium" onClick={handleCardTap} className="w-full bg-surface rounded-2xl p-4 flex items-center justify-between border border-gold/20 shadow-[0_0_15px_rgba(240,192,96,0.1)] mt-2">
           <div className="flex items-center gap-4">
              <div className="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center text-gold shadow-[0_0_10px_rgba(240,192,96,0.3)]">
                 <Star className="w-5 h-5 fill-current" />

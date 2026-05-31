@@ -17,7 +17,7 @@
    Collecting build traces ...
 
 Route (app)                              Size     First Load JS
-┌ ○ /                                    186 B          96.7 kB
+┌ ○ /                                    2.52 kB        99.3 kB
 ├ ○ /_not-found                          872 B          88.1 kB
 ├ ○ /feed                                853 B          88.1 kB
 ├ ○ /library                             853 B          88.1 kB
@@ -27,8 +27,8 @@ Route (app)                              Size     First Load JS
 ├ ○ /search                              2.03 kB        89.3 kB
 └ ○ /stories                             855 B          88.1 kB
 + First Load JS shared by all            87.3 kB
-  ├ chunks/5b8f0dd8-d8ea03692344a631.js  53.6 kB
-  ├ chunks/749-2e852655a3a27bf7.js       31.7 kB
+  ├ chunks/5b8f0dd8-1a4d236784e14726.js  53.6 kB
+  ├ chunks/749-6c3d2f1047e57e63.js       31.7 kB
   └ other shared chunks (total)          1.89 kB
 
 
