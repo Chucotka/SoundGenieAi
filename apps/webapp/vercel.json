@@ -1,0 +1,13 @@
+{
+  "framework": "nextjs",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_BOT_USERNAME": "@SoundGenieAIBot",
+    "NEXT_PUBLIC_WEBAPP_URL": "https://soundgenie-ai.vercel.app"
+  }
+}

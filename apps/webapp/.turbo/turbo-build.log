@@ -19,9 +19,9 @@
 Route (app)                              Size     First Load JS
 ┌ ○ /                                    2.52 kB        99.3 kB
 ├ ○ /_not-found                          872 B          88.1 kB
-├ ○ /feed                                853 B          88.1 kB
-├ ○ /library                             853 B          88.1 kB
-├ ○ /player                              853 B          88.1 kB
+├ ○ /feed                                855 B          88.1 kB
+├ ○ /library                             855 B          88.1 kB
+├ ○ /player                              855 B          88.1 kB
 ├ ○ /premium                             853 B          88.1 kB
 ├ ○ /remix                               855 B          88.1 kB
 ├ ○ /search                              2.03 kB        89.3 kB
