@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String     @id @default(uuid())
+  telegramId        String     @unique
+  username          String?
+  subscriptionPlan  String     @default("Free") // Free, Pro, Creator
+  creditsBalance    Int        @default(5)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  remixes           Remix[]
+  playlists         Playlist[]
+}
+
+model Track {
+  id          String   @id @default(uuid())
+  originalUrl String?
+  title       String
+  artist      String
+  duration    Float
+  bpm         Float?
+  key         String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  remixes     Remix[]
+}
+
+model Remix {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  trackId     String
+  track       Track    @relation(fields: [trackId], references: [id])
+  aiPrompt    String?
+  audioUrl    String
+  remixType   String
+  duration    Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  stories     Story[]
+}
+
+model Story {
+  id            String   @id @default(uuid())
+  remixId       String
+  remix         Remix    @relation(fields: [remixId], references: [id])
+  videoUrl      String
+  templateUsed  String
+  sharesCount   Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Playlist {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  name        String
+  trackIds    String   // Store JSON array of string IDs
+  isPublic    Boolean  @default(false)
+  playsCount  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

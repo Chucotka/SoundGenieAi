@@ -1,0 +1,5 @@
+
+> webapp@0.1.0 lint /app/apps/webapp
+> next lint
+
+✔ No ESLint warnings or errors
